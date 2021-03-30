@@ -18,17 +18,19 @@ architecture Behavioral of johnson_counter_tb is
     --Outputs
     signal Q : std_logic_vector(3 downto 0);
 
+   -- Clock period definitions
    constant CLOCK_PERIOD : time := 10 ns;
 
 begin
 
+    -- Instantiate the Unit Under Test (UUT)
    uut: entity work.johnson_counter PORT MAP (
           CLOCK => CLOCK,
           RESET => RESET,
           Q => Q
         );
 
-
+   -- Clock process definitions
    CLOCK_PROCESS :process
    begin
         CLOCK <= '0';
@@ -37,6 +39,7 @@ begin
         wait for CLOCK_PERIOD/2;
    end process;
 
+   -- Stimulus process
    stim_proc: process
    begin       
         RESET <= '1';
